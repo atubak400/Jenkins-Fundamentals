@@ -1,5 +1,5 @@
 # Jenkins-Fundamentals
-
+![Install Jenkins](./img/0.png)
 Jenkins is a tool that helps automate tasks in software development, like building, testing, and deploying code. It simplifies the process by letting developers set up automated workflows, ensuring that software changes are tested and delivered smoothly. It's widely used in the DevOps world for making software development more efficient and reliable.
 
 ## Install Jenkins
