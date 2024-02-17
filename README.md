@@ -1,4 +1,5 @@
 # Jenkins-Fundamentals
+
 ![Install Jenkins](./img/0.png)
 Jenkins is a tool that helps automate tasks in software development, like building, testing, and deploying code. It simplifies the process by letting developers set up automated workflows, ensuring that software changes are tested and delivered smoothly. It's widely used in the DevOps world for making software development more efficient and reliable.
 
@@ -9,23 +10,27 @@ Jenkins is a tool that helps automate tasks in software development, like buildi
 > Step 2: run the code below on your teminal
 
 ```
-docker pull jenkins/jenkins:lts
+sudo docker pull jenkins/jenkins:lts
 ```
+
 ![Install Jenkins](./img/1.png)
 
 <span style="color:gray">_Pulls the official Jenkins Docker image tagged as "lts" (Long Term Support) from Docker Hub. This image provides a stable version of Jenkins._</span>
 
 > Step 3
+
 ```
-docker volume create jenkins-data
+sudo docker volume create jenkins-data
 ```
+
 <span style="color:gray">_Creates a named Docker volume named "jenkins-data." This volume is typically employed to persist data generated and used by a Jenkins container, ensuring that the data survives even if the container is stopped or removed._</span>
 
-
 > Step 4
+
 ```
-docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home --name jenkins-container jenkins/jenkins:lts
+sudo docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home --name jenkins jenkins/jenkins:lts
 ```
+
 ![Install Jenkins](./img/2.png)
 <span style="color:gray">_-d: Run the container in the background (detached mode).
 -p 8080:8080: Map host port 8080 to container port 8080 for accessing the Jenkins web UI.
@@ -37,12 +42,43 @@ This command will start a Jenkins container, and you can access the Jenkins web 
 
 ![Install Jenkins](./img/3.png)
 
-> Step 5: Install suggested plugin and login to dashboard
+> Step 5: Check the initial admin password
+
 ```
-docker exec -it jenkins-container cat /var/jenkins_home/secrets/initialAdminPassword
+sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+
 ![Install Jenkins](./img/4.png)
 ![Install Jenkins](./img/5.png)
 ![Install Jenkins](./img/6.png)
 <span style="color:gray">_Retrieves the admin password. Paste it into the Jenkins web UI setup page to unlock Jenkins and complete the initial configuration._</span>
 
+# If you're on aws ec2
+
+### Update system packages
+
+sudo yum update -y
+
+### Install Java 17 (Amazon Corretto) headless
+
+sudo yum install java-17-amazon-corretto-headless -y
+
+### Download and add Jenkins repository
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+
+### Install wget (if not installed)
+
+sudo yum install -y wget
+
+### Install Jenkins (disable GPG check temporarily)
+
+sudo yum install -y --nogpgcheck jenkins
+
+### Enable and start Jenkins service
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+
+Visit: `http://52.33.27.248:8080/`, use the password from the terminal to login.
