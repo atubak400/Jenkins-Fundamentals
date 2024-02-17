@@ -55,30 +55,29 @@ sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 # If you're on aws ec2
 
-### Update system packages
+> Update system packages
 
-sudo yum update -y
+`sudo yum update -y`
 
-### Install Java 17 (Amazon Corretto) headless
+> Install Java 17 (Amazon Corretto) headless
 
-sudo yum install java-17-amazon-corretto-headless -y
+`sudo yum install java-17-amazon-corretto-headless -y`
 
-### Download and add Jenkins repository
+> Download and add Jenkins repository
 
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+`sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo`
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key`
 
-### Install wget (if not installed)
+> Install wget (if not installed)
 
-sudo yum install -y wget
+`sudo yum install -y wget`
 
-### Install Jenkins (disable GPG check temporarily)
+> Install Jenkins (disable GPG check temporarily)
 
-sudo yum install -y --nogpgcheck jenkins
+`sudo yum install -y --nogpgcheck jenkins`
+> Enable and start Jenkins service
 
-### Enable and start Jenkins service
+`sudo systemctl enable jenkins`
+`sudo systemctl start jenkins`
 
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
-
-Visit: `http://52.33.27.248:8080/`, use the password from the terminal to login.
+Visit: `http://<public-ip>:8080/`, use the password from the terminal to login.
