@@ -3,7 +3,7 @@
 ![Install Jenkins](./img/0.png)
 Jenkins is a tool that helps automate tasks in software development, like building, testing, and deploying code. It simplifies the process by letting developers set up automated workflows, ensuring that software changes are tested and delivered smoothly. It's widely used in the DevOps world for making software development more efficient and reliable.
 
-## Install Jenkins
+## Installing Jenkins on Docker Container
 
 > Step 1: Launch your docker desktop
 
@@ -53,7 +53,7 @@ sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ![Install Jenkins](./img/6.png)
 <span style="color:gray">_Retrieves the admin password. Paste it into the Jenkins web UI setup page to unlock Jenkins and complete the initial configuration._</span>
 
-# If you're on aws ec2
+## Installing Jenkins on a Virtual Machine
 
 > Update system packages
 
