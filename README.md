@@ -49,7 +49,7 @@ sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ![Install Jenkins](./img/4.png)
-![Install Jenkins](./img/5.png)
+![Install Jenkins](./img/5a.png)
 ![Install Jenkins](./img/6.png)
 <span style="color:gray">_Retrieves the admin password. Paste it into the Jenkins web UI setup page to unlock Jenkins and complete the initial configuration._</span>
 
